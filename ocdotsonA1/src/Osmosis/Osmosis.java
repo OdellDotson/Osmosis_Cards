@@ -25,15 +25,18 @@ public class Osmosis extends Solitaire {
 	FanPileView handView;
 	RowView columnView1,columnView2,columnView3,columnView4;
 	
+	
+	
 
 	@Override
 	public String getName() {
 		return "Osmosis Dotson";
 	}
+	
 
 	@Override
 	public boolean hasWon() {
-		return deck.empty() &&
+		return deck.empty() && hand.empty() && 
 				   pile1.empty() && pile2.empty() && pile3.empty() && pile4.empty();
 	}
 
@@ -83,6 +86,7 @@ public class Osmosis extends Solitaire {
 		pileView2.setMouseAdapter(new OsmosisPileController (this, pileView2));
 		pileView3.setMouseAdapter(new OsmosisPileController (this, pileView3));
 		pileView4.setMouseAdapter(new OsmosisPileController (this, pileView4));
+		handView.setMouseAdapter(new OsmosisHandController (this, handView));
 		deckView.setMouseAdapter(new OsmosisDeckController (this));
 	}
 	
@@ -112,20 +116,18 @@ public class Osmosis extends Solitaire {
 		column3 = new Column("column3");
 		column4 = new Column("column4");
 
-		// add to our model a set of four piles
+		// add to our model a set of four piles and the hand.
 		addModelElement(pile1);
 		addModelElement(pile2);
 		addModelElement(pile3);
 		addModelElement(pile4);	
-		
 		addModelElement(hand);
 		
 		//Add to our model our four columns.
 		addModelElement(column1);
 		addModelElement(column2);
 		addModelElement(column3);
-		addModelElement(column4);
-		
+		addModelElement(column4);	
 	}
 	
 	void initializeView() {

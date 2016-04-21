@@ -43,8 +43,8 @@ public class OsmosisPileController extends java.awt.event.MouseAdapter {
 
 		// Have container track this object now. Record where it came from
 		Container c = osmosisGame.getContainer();
-		c.setActiveDraggingObject (cardView, me);
-		c.setDragSource(pileview);
+		//c.setActiveDraggingObject (cardView, me);
+		//c.setDragSource(pileview);
 
 		// we simply redraw our source pile to avoid flicker,
 		// rather than refreshing all widgets...

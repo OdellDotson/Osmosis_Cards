@@ -12,6 +12,8 @@ public class DealMove extends Move {
 
     /** The hand. */
 	protected Column hand;
+	
+	int numberOfCardsJustDelt = 0;
     
     /**
      * Class Representing the action of dealing four cards to each Pile.
@@ -22,7 +24,6 @@ public class DealMove extends Move {
         /** Store all parameters with the Move Object. */
         this.deck = d;
         this.hand = h;
-
     }
     
     /**
@@ -35,7 +36,7 @@ public class DealMove extends Move {
      * @return boolean
      */
     public boolean doMove(Solitaire theGame) {
-    	System.out.print("Move started... ");
+    	//System.out.print("Move started... ");
         // VALIDATE:
         if (valid(theGame) == false)
         {
@@ -44,11 +45,10 @@ public class DealMove extends Move {
         }
 
         // EXECUTE:
-    	System.out.println("Move is valid.");
+    	//System.out.println("Move is valid.");
 
         if(deck.count() == 0)
         {
-        	System.out.print("Deck empty. ");
         	int handSize = hand.count(); //Temp variable to manage number of cards count
             for( int i = 0; i < handSize; i++)
             {
@@ -58,14 +58,15 @@ public class DealMove extends Move {
         }
         else if(deck.count() == 2)
         {
-        	System.out.println("Deck at two.");
 	        hand.add(deck.get());
 	        hand.add(deck.get());
+	        numberOfCardsJustDelt = 2;
 	        theGame.updateNumberCardsLeft(-2);
         }
         else if(deck.count() == 1)
         {
             hand.add(deck.get());
+            numberOfCardsJustDelt = 1;
             theGame.updateNumberCardsLeft(-1);
         }
         else if(deck.count() >= 3)
@@ -73,6 +74,7 @@ public class DealMove extends Move {
             hand.add(deck.get());
             hand.add(deck.get());
             hand.add(deck.get());
+            numberOfCardsJustDelt = 3;
             theGame.updateNumberCardsLeft(-3);
         }
         else
@@ -92,16 +94,29 @@ public class DealMove extends Move {
     public boolean undo(Solitaire theGame) {
         // VALIDATE:
         if (hand.empty())
-            return false;
+        {
+        	while(!deck.empty())
+        	{
+        		hand.add(deck.get());
+        		theGame.updateNumberCardsLeft(-1);
+        	}
+        }
 
         // UNDO:
-        // carefully reverse order of operations (changes to models will cause views to be marked as dirty)
-        deck.add(hand.get());
-        deck.add(hand.get());
-        deck.add(hand.get());
+        // carefully reverse order of operations
+        //System.out.print("Number of cards that should be moved from hand to deck:");
+        //System.out.println(numberOfCardsJustDelt);
+        for(int i = 0; i<numberOfCardsJustDelt; i++)
+        {
+        	deck.add(hand.get());
+        	theGame.updateNumberCardsLeft(+1);
+        }
+//        deck.add(hand.get());
+//        deck.add(hand.get());	            
+        //theGame.updateNumberCardsLeft(+numberOfCardsJustDelt);
+
 
         // update count in deck.
-        theGame.updateNumberCardsLeft(+3);
         return true;
     }
     

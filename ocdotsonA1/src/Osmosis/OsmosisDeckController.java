@@ -8,12 +8,11 @@ import ks.common.model.Pile;
 
 public class OsmosisDeckController extends java.awt.event.MouseAdapter {
     /** The narcotic instance. */
-    protected Solitaire osmosisGame = null;
+    protected Osmosis osmosisGame = null;
 
     /** NarcoticDeckController constructor comment. */
-    public OsmosisDeckController(Solitaire game) {
+    public OsmosisDeckController(Osmosis game) {
         super();
-
         osmosisGame = game;
     }
     
@@ -30,7 +29,6 @@ public class OsmosisDeckController extends java.awt.event.MouseAdapter {
         // Find the deck from our model
         Deck d = (Deck) osmosisGame.getModelElement("deck");
         Column h = (Column) osmosisGame.getModelElement("hand");
-
 
         // Deal 3 cards or remaining, or if empty move hand back to deck.
         Move m = new DealMove(d, h);
