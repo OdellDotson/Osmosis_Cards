@@ -1,6 +1,7 @@
 package Osmosis;
 
 import ks.common.games.Solitaire;
+import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;
 import ks.common.model.Pile;
@@ -10,12 +11,12 @@ public class DealMove extends Move {
     protected Deck deck;
 
     /** The hand. */
-	protected Pile hand;
+	protected Column hand;
     
     /**
      * Class Representing the action of dealing four cards to each Pile.
      */
-    public DealMove(Deck d, Pile h) {
+    public DealMove(Deck d, Column h) {
         super();
 
         /** Store all parameters with the Move Object. */

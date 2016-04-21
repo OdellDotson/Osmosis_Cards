@@ -1,6 +1,7 @@
 package Osmosis;
 
 import ks.common.games.Solitaire;
+import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;
 import ks.common.model.Pile;
@@ -28,7 +29,7 @@ public class OsmosisDeckController extends java.awt.event.MouseAdapter {
 
         // Find the deck from our model
         Deck d = (Deck) osmosisGame.getModelElement("deck");
-        Pile h = (Pile) osmosisGame.getModelElement("hand");
+        Column h = (Column) osmosisGame.getModelElement("hand");
 
 
         // Deal 3 cards or remaining, or if empty move hand back to deck.
@@ -41,6 +42,6 @@ public class OsmosisDeckController extends java.awt.event.MouseAdapter {
         	osmosisGame.refreshWidgets();
         }
         else
-        	System.out.println("FUCKED UP");
+        	System.out.println("Messed UP");
     }
 }

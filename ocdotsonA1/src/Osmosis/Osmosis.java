@@ -7,6 +7,7 @@ import ks.common.model.Deck;
 import ks.common.model.Pile;
 import ks.common.view.CardImages;
 import ks.common.view.DeckView;
+import ks.common.view.FanPileView;
 import ks.common.view.IntegerView;
 import ks.common.view.PileView;
 import ks.common.view.RowView;
@@ -17,10 +18,11 @@ public class Osmosis extends Solitaire {
 	IntegerView scoreView;
 	IntegerView numLeftView;
 	Deck deck;
-	Pile pile1, pile2, pile3, pile4, hand;
-	Column column1, column2, column3, column4;
+	Pile pile1, pile2, pile3, pile4;
+	Column column1, column2, column3, column4, hand;
 	DeckView deckView;
-	PileView pileView1, pileView2, pileView3, pileView4, handView;
+	PileView pileView1, pileView2, pileView3, pileView4;
+	FanPileView handView;
 	RowView columnView1,columnView2,columnView3,columnView4;
 	
 
@@ -103,7 +105,7 @@ public class Osmosis extends Solitaire {
 		pile3 = new Pile("pile3");
 		pile4 = new Pile("pile4");
 		
-		hand = new Pile("hand");
+		hand = new Column("hand");
 		
 		column1 = new Column("column1");
 		column2 = new Column("column2");
@@ -124,7 +126,6 @@ public class Osmosis extends Solitaire {
 		addModelElement(column3);
 		addModelElement(column4);
 		
-		
 	}
 	
 	void initializeView() {
@@ -136,8 +137,8 @@ public class Osmosis extends Solitaire {
 		deckView.setBounds(80, 10, ci.getWidth(), ci.getHeight());
 		addViewWidget(deckView);
 		
-		handView = new PileView(hand);
-		handView.setBounds(200, 10, ci.getWidth(), ci.getHeight());
+		handView = new FanPileView(3, hand);
+		handView.setBounds(200, 10, 3*ci.getWidth(), ci.getHeight());
 		addViewWidget(handView);
 
 		pileView1 = new PileView(pile1);
