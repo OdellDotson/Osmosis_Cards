@@ -14,6 +14,13 @@ import ks.common.view.PileView;
 import ks.common.view.RowView;
 import ks.launcher.Main;
 
+/**
+ * Osmosis!
+ * @author odell
+ *
+ */
+
+
 public class Osmosis extends Solitaire {
 	
 	IntegerView scoreView;
