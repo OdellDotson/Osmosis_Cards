@@ -32,20 +32,26 @@ public class ReserveController extends java.awt.event.MouseAdapter {
 		 //Pile f = (Pile) osmosisGame.getModelElement("hand");
 	    //Pile h = (Pile) osmosisGame.getModelElement("hand");
 	    
-	    
-       Move m = new ReserveToFoundationMove(osmosisGame,reserve);
-       if (m.doMove(osmosisGame)) {
-           // SUCCESS: have solitaire game store this move
-       	osmosisGame.pushMove(m);
+	 
+    }
+    
+    public void mouseReleased(java.awt.event.MouseEvent me)
+    {
+        
+        Move m = new ReserveToFoundationMove(osmosisGame,reserve);
+        if (m.doMove(osmosisGame)) {
+            // SUCCESS: have solitaire game store this move
+        	osmosisGame.pushMove(m);
 
-           // have solitaire game refresh widgets that were affected 
-       	osmosisGame.refreshWidgets();
-       }
-       else
-       	System.out.println("Messed UP");
-		
-    	
-    	
-		pileview.redraw();        
+            // have solitaire game refresh widgets that were affected 
+        	osmosisGame.refreshWidgets();
+        }
+        
+        else{}
+        //System.out.println("Reserve controller messed UP");
+ 		
+     	
+     	
+ 		pileview.redraw();       
     }
 }

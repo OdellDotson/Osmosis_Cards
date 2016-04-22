@@ -58,8 +58,10 @@ public class DealMove extends Move {
         }
         else if(deck.count() == 2)
         {
+        	Pile temp = new Pile();
+	        temp.add(deck.get());
 	        hand.add(deck.get());
-	        hand.add(deck.get());
+	        hand.add(temp.get());
 	        numberOfCardsJustDelt = 2;
 	        theGame.updateNumberCardsLeft(-2);
         }
@@ -71,9 +73,15 @@ public class DealMove extends Move {
         }
         else if(deck.count() >= 3)
         {
+        	Pile temp = new Pile();
+        	Pile temp2 = new Pile();
+
+            temp.add(deck.get());
+            temp2.add(deck.get());
             hand.add(deck.get());
-            hand.add(deck.get());
-            hand.add(deck.get());
+            hand.add(temp2.get());
+            hand.add(temp.get());
+            
             numberOfCardsJustDelt = 3;
             theGame.updateNumberCardsLeft(-3);
         }

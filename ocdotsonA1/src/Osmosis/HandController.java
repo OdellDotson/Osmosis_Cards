@@ -28,7 +28,25 @@ public class HandController extends java.awt.event.MouseAdapter {
 		
     	//System.out.println("Clicked the hand.");
 		 //Pile f = (Pile) osmosisGame.getModelElement("hand");
-	    Column h = (Column) osmosisGame.getModelElement("hand");
+//	    Column h = (Column) osmosisGame.getModelElement("hand");
+//	    
+//	    
+//        Move m = new HandToFoundationMove(osmosisGame,h);
+//        if (m.doMove(osmosisGame)) {
+//            // SUCCESS: have solitaire game store this move
+//        	osmosisGame.pushMove(m);
+//
+//            // have solitaire game refresh widgets that were affected 
+//        	osmosisGame.refreshWidgets();
+//        }
+//        else{}
+//        	//System.out.println("Hand controller messed UP");
+    }
+    
+    
+    public void mouseReleased(java.awt.event.MouseEvent me)
+    {
+    	Column h = (Column) osmosisGame.getModelElement("hand");
 	    
 	    
         Move m = new HandToFoundationMove(osmosisGame,h);
@@ -39,7 +57,7 @@ public class HandController extends java.awt.event.MouseAdapter {
             // have solitaire game refresh widgets that were affected 
         	osmosisGame.refreshWidgets();
         }
-        else
-        	System.out.println("Messed UP");
+        else{}
+        	//System.out.println("Hand controller messed UP");
     }
 }

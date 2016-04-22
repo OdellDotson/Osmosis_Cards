@@ -2,6 +2,7 @@ package Osmosis;
 
 import ks.client.gamefactory.GameWindow;
 import ks.common.games.Solitaire;
+import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Pile;
@@ -24,6 +25,7 @@ public class Osmosis extends Solitaire {
 	PileView pileView1, pileView2, pileView3, pileView4;
 	FanPileView handView;
 	RowView columnView1,columnView2,columnView3,columnView4;
+	Card firstCard;
 	
 	
 	
@@ -41,13 +43,21 @@ public class Osmosis extends Solitaire {
 
 	@Override
 	public void initialize() {
-		setSeed(193);
+		//setSeed(193);
 		// Initialize model, view, and controllers.
 		initializeModel(getSeed());
 		initializeView();
 		initializeController();
 		System.out.println(getSeed());
 		// Prepare game AFTER all controllers are set up.
+		
+		
+		
+		//Deal a single card to the first foundation.		
+		column1.add(deck.get());
+		firstCard = column1.peek();
+		
+		
 		// each reserve gets four cards from the deck.
 		pile1.add (deck.get());
 		pile2.add (deck.get());
@@ -72,8 +82,7 @@ public class Osmosis extends Solitaire {
 		// we have dealt four cards to each of the four reserves.
 		updateNumberCardsLeft (-16);	
 
-		//Deal a single card to the first foundation.		
-		column1.add(deck.get());
+
 
 		
 		updateNumberCardsLeft (-1);
@@ -189,7 +198,7 @@ public class Osmosis extends Solitaire {
 	/** Code to launch solitaire variation. */
 	public static void main (String []args) {
 		// Seed is to ensure we get the same initial cards every time.
-		GameWindow gw = Main.generateWindow(new Osmosis(), 117);
+		GameWindow gw = Main.generateWindow(new Osmosis(), Deck.OrderBySuit);
 		gw.setVisible(true);
 	}
 

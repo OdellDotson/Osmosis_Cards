@@ -1,10 +1,8 @@
 package Osmosis;
 
-import ks.common.games.Solitaire;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;
-import ks.common.model.Pile;
 
 public class DealController extends java.awt.event.MouseAdapter {
     /** The narcotic instance. */
