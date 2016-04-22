@@ -19,31 +19,218 @@ public class HandToFoundationMove extends Move {
         this.mainGame = mainGame;
     }
     
-    /**
-     * Each move should knows how to execute itself.
-     * <p>
-     * Note: this interface wasn't in place in time for the course, so this
-     * method returns false, and can be overridden by the necessary subclasses.
-     * <p>
-     * @param theGame    the game being played.
-     * @return boolean
-     */
+    public boolean allowedToMakeHandFoundationMove(Osmosis mainGame)
+    {
+    	if(mainGame.pile1.count() > 0)
+    	{
+	    	if(mainGame.pile1.peek().sameSuit(mainGame.column1.peek()))
+	        {
+	        	return false;
+	        }        
+	        else if((mainGame.column2.count()>0) && mainGame.pile1.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column1.count(); i++)
+	        	{
+	        		if(mainGame.column1.peek(i).getRank() == mainGame.pile1.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+	        else if((mainGame.column3.count()>0) && mainGame.pile1.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column2.count(); i++)
+	        	{
+	        		if(mainGame.column2.peek(i).getRank() == mainGame.pile1.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        } 
+	        else if((mainGame.column4.count()>0) && mainGame.pile1.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column3.count(); i++)
+	        	{
+	        		if(mainGame.column3.peek(i).getRank() == mainGame.pile1.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+    	}
+    	
+    	if(mainGame.pile4.count() > 0)
+    	{
+	    	if(mainGame.pile4.peek().sameSuit(mainGame.column1.peek()))
+	        {
+	        	return false;
+	        }        
+	        else if((mainGame.column2.count()>0) && mainGame.pile4.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column1.count(); i++)
+	        	{
+	        		if(mainGame.column1.peek(i).getRank() == mainGame.pile4.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+	        else if((mainGame.column3.count()>0) && mainGame.pile4.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column2.count(); i++)
+	        	{
+	        		if(mainGame.column2.peek(i).getRank() == mainGame.pile4.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        } 
+	        else if((mainGame.column4.count()>0) && mainGame.pile4.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column3.count(); i++)
+	        	{
+	        		if(mainGame.column3.peek(i).getRank() == mainGame.pile4.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+    	}
+    	
+    	
+    	
+    	if(mainGame.pile2.count() > 0)
+    	{
+	    	if(mainGame.pile2.peek().sameSuit(mainGame.column1.peek()))
+	        {
+	        	return false;
+	        }        
+	        else if((mainGame.column2.count()>0) && mainGame.pile2.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column1.count(); i++)
+	        	{
+	        		if(mainGame.column1.peek(i).getRank() == mainGame.pile2.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+	        else if((mainGame.column3.count()>0) && mainGame.pile2.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column2.count(); i++)
+	        	{
+	        		if(mainGame.column2.peek(i).getRank() == mainGame.pile2.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        } 
+	        else if((mainGame.column4.count()>0) && mainGame.pile2.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column3.count(); i++)
+	        	{
+	        		if(mainGame.column3.peek(i).getRank() == mainGame.pile2.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+	    }
+    	
+    	
+    	if(mainGame.pile3.count() > 0)
+    	{
+	    	if(mainGame.pile3.peek().sameSuit(mainGame.column1.peek()))
+	        {
+	        	return false;
+	        }        
+	        else if((mainGame.column2.count()>0) && mainGame.pile3.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column1.count(); i++)
+	        	{
+	        		if(mainGame.column1.peek(i).getRank() == mainGame.pile3.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+	        else if((mainGame.column3.count()>0) && mainGame.pile3.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column2.count(); i++)
+	        	{
+	        		if(mainGame.column2.peek(i).getRank() == mainGame.pile3.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        } 
+	        else if((mainGame.column4.count()>0) && mainGame.pile3.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+	        {
+	        	for(int i = 0; i < mainGame.column3.count(); i++)
+	        	{
+	        		if(mainGame.column3.peek(i).getRank() == mainGame.pile3.peek().getRank())
+	        		{
+	        			return false;
+	        		}
+		        }
+	        }
+    	}
+    	
+    	return true;
+    }
+    
+    
     public boolean doMove(Solitaire theGame) {
     	//System.out.print("Move started... ");
         // VALIDATE:
+    	System.out.println(allowedToMakeHandFoundationMove(mainGame));
         if (valid(theGame) == false)
         {
         	//System.out.print("Invalid move.");
             return false;
         }
-        //if ()
+        if (allowedToMakeHandFoundationMove(mainGame) == false)
+        {
+        	return false;
+        }
 
         // EXECUTE:
     	System.out.println("Move is valid.");
 
+//        if(hand.empty())
+//        {
+//        	System.out.print("Hand empty. ");
+//        	return false;
+//        }
+//        if(hand.peek().sameSuit(mainGame.column1.peek()))
+//        {
+//        	mainGame.column1.add(hand.get());
+//        	mostRecentFoundation = mainGame.column1;
+//        	theGame.updateNumberCardsLeft(+1);
+//        }        
+//        else if(hand.peek().sameSuit(mainGame.column2.peek()))
+//        {
+//        	//if(column1.cards)
+//        	{
+//	        	mainGame.column1.add(hand.get());
+//	        	mostRecentFoundation = mainGame.column1;
+//	        	theGame.updateNumberCardsLeft(+1);
+//        	}
+//        } 
+//        else if(hand.peek().sameSuit(mainGame.column3.peek()))
+//        {
+//        	
+//        } 
+//        else if(hand.peek().sameSuit(mainGame.column4.peek()))
+//        {
+//        	
+//        }
+//        //return true;
+        
+        
         if(hand.empty())
         {
-        	System.out.print("Hand empty. ");
+        	System.out.print("Reserve empty. ");
         	return false;
         }
         if(hand.peek().sameSuit(mainGame.column1.peek()))
@@ -52,24 +239,44 @@ public class HandToFoundationMove extends Move {
         	mostRecentFoundation = mainGame.column1;
         	theGame.updateNumberCardsLeft(+1);
         }        
-        else if(hand.peek().sameSuit(mainGame.column2.peek()))
+        else if((mainGame.column2.count()>0) && hand.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
         {
-        	//if(column1.cards)
+        	System.out.println("Nyah!");
+        	for(int i = 0; i < mainGame.column1.count(); i++)
         	{
-	        	mainGame.column1.add(hand.get());
-	        	mostRecentFoundation = mainGame.column1;
-	        	theGame.updateNumberCardsLeft(+1);
-        	}
-        } 
-        else if(hand.peek().sameSuit(mainGame.column3.peek()))
-        {
-        	
-        } 
-        else if(hand.peek().sameSuit(mainGame.column4.peek()))
-        {
-        	
+        		if(mainGame.column1.peek(i).getRank() == hand.peek().getRank())
+        		{
+        			mainGame.column2.add(hand.get());
+    	        	mostRecentFoundation = mainGame.column2;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        }
         }
-        return true;
+        else if((mainGame.column3.count()>0) && hand.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+        {
+        	for(int i = 0; i < mainGame.column2.count(); i++)
+        	{
+        		if(mainGame.column2.peek(i).getRank() == hand.peek().getRank())
+        		{
+        			mainGame.column3.add(hand.get());
+    	        	mostRecentFoundation = mainGame.column3;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        }
+        } 
+        else if((mainGame.column4.count()>0) && hand.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+        {
+        	for(int i = 0; i < mainGame.column3.count(); i++)
+        	{
+        		if(mainGame.column3.peek(i).getRank() == hand.peek().getRank())
+        		{
+        			mainGame.column4.add(hand.get());
+    	        	mostRecentFoundation = mainGame.column4;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        }
+        }
+        return true;   
     }
     
     /**

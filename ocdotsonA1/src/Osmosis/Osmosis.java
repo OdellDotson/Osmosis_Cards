@@ -36,17 +36,17 @@ public class Osmosis extends Solitaire {
 
 	@Override
 	public boolean hasWon() {
-		return deck.empty() && hand.empty() && 
-				   pile1.empty() && pile2.empty() && pile3.empty() && pile4.empty();
+		return deck.empty() && hand.empty() && pile1.empty() && pile2.empty() && pile3.empty() && pile4.empty();
 	}
 
 	@Override
 	public void initialize() {
+		setSeed(193);
 		// Initialize model, view, and controllers.
 		initializeModel(getSeed());
 		initializeView();
 		initializeController();
-		
+		System.out.println(getSeed());
 		// Prepare game AFTER all controllers are set up.
 		// each reserve gets four cards from the deck.
 		pile1.add (deck.get());

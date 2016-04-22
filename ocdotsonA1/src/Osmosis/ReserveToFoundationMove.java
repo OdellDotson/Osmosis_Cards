@@ -45,7 +45,7 @@ public class ReserveToFoundationMove extends Move {
 
         if(reserve.empty())
         {
-        	System.out.print("Hand empty. ");
+        	System.out.print("Reserve empty. ");
         	return false;
         }
         if(reserve.peek().sameSuit(mainGame.column1.peek()))
@@ -57,23 +57,39 @@ public class ReserveToFoundationMove extends Move {
         else if((mainGame.column2.count()>0) && reserve.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
         {
         	System.out.println("Nyah!");
-        	for(int i = 0; i < reserve.count(); i++)
+        	for(int i = 0; i < mainGame.column1.count(); i++)
         	{
-        		//if(mainGame.column2.peek(i).getRank() == reserve.peek().getRank())
+        		if(mainGame.column1.peek(i).getRank() == reserve.peek().getRank())
         		{
         			mainGame.column2.add(reserve.get());
     	        	mostRecentFoundation = mainGame.column2;
     	        	theGame.updateNumberCardsLeft(+1);
         		}
-	        } 
+	        }
         }
-        else if(reserve.peek().sameSuit(mainGame.column3.peek()))
+        else if((mainGame.column3.count()>0) && reserve.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
         {
-        	
+        	for(int i = 0; i < mainGame.column2.count(); i++)
+        	{
+        		if(mainGame.column2.peek(i).getRank() == reserve.peek().getRank())
+        		{
+        			mainGame.column3.add(reserve.get());
+    	        	mostRecentFoundation = mainGame.column3;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        }
         } 
-        else if(reserve.peek().sameSuit(mainGame.column4.peek()))
+        else if((mainGame.column4.count()>0) && reserve.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
         {
-        	
+        	for(int i = 0; i < mainGame.column3.count(); i++)
+        	{
+        		if(mainGame.column3.peek(i).getRank() == reserve.peek().getRank())
+        		{
+        			mainGame.column4.add(reserve.get());
+    	        	mostRecentFoundation = mainGame.column4;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        }
         }
         return true;
     }
