@@ -56,6 +56,7 @@ public class Osmosis extends Solitaire {
 		//Deal a single card to the first foundation.		
 		column1.add(deck.get());
 		firstCard = column1.peek();
+		updateScore(+1);
 		
 		
 		// each reserve gets four cards from the deck.

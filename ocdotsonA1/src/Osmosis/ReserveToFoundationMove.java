@@ -48,8 +48,8 @@ public class ReserveToFoundationMove extends Move {
         if(reserve.peek().sameSuit(mainGame.column1.peek()))
         {
         	mainGame.column1.add(reserve.get());
-        	mostRecentFoundation = mainGame.column1;
-        	theGame.updateNumberCardsLeft(+1);
+        	mostRecentFoundation = mainGame.column1;			
+			mainGame.updateScore(+1);
         }        
         
         //Foundation 2
@@ -60,6 +60,7 @@ public class ReserveToFoundationMove extends Move {
         		if(reserve.peek().getRank() == mainGame.firstCard.getRank())
         		{
         			mainGame.column2.add(reserve.get());
+        			mainGame.updateScore(+1);
     	        	mostRecentFoundation = mainGame.column2;
         		}
         	}
@@ -70,8 +71,8 @@ public class ReserveToFoundationMove extends Move {
 	        		if(mainGame.column1.peek(i).getRank() == reserve.peek().getRank())
 	        		{
 	        			mainGame.column2.add(reserve.get());
+	        			mainGame.updateScore(+1);
 	    	        	mostRecentFoundation = mainGame.column2;
-	    	        	theGame.updateNumberCardsLeft(+1);
 	        		}
 		        }
         	}
@@ -84,7 +85,8 @@ public class ReserveToFoundationMove extends Move {
         	{
         		if(reserve.peek().getRank() == mainGame.firstCard.getRank())
         		{
-        			mainGame.column3.add(reserve.get());
+        			mainGame.column3.add(reserve.get());        			
+        			mainGame.updateScore(+1);
     	        	mostRecentFoundation = mainGame.column3;
         		}
         	}
@@ -94,7 +96,8 @@ public class ReserveToFoundationMove extends Move {
 	        	{
 	        		if(mainGame.column2.peek(i).getRank() == reserve.peek().getRank())
 	        		{
-	        			mainGame.column3.add(reserve.get());
+	        			mainGame.column3.add(reserve.get());    			
+	        			mainGame.updateScore(+1);
 	    	        	mostRecentFoundation = mainGame.column3;
 	    	        	theGame.updateNumberCardsLeft(+1);
 	        		}
@@ -109,7 +112,8 @@ public class ReserveToFoundationMove extends Move {
         	{
         		if(reserve.peek().getRank() == mainGame.firstCard.getRank())
         		{
-        			mainGame.column4.add(reserve.get());
+        			mainGame.column4.add(reserve.get());    			
+        			mainGame.updateScore(+1);
     	        	mostRecentFoundation = mainGame.column4;
         		}
         	}
@@ -119,9 +123,9 @@ public class ReserveToFoundationMove extends Move {
 	        	{
 	        		if(mainGame.column3.peek(i).getRank() == reserve.peek().getRank())
 	        		{
-	        			mainGame.column4.add(reserve.get());
+	        			mainGame.column4.add(reserve.get());    			
+	        			mainGame.updateScore(+1);
 	    	        	mostRecentFoundation = mainGame.column4;
-	    	        	theGame.updateNumberCardsLeft(+1);
 	        		}
 		        }
         	}
@@ -145,7 +149,8 @@ public class ReserveToFoundationMove extends Move {
 
         // update count in deck.
         //theGame.updateNumberCardsLeft(+1);
-    	reserve.add(mostRecentFoundation.get());
+    	reserve.add(mostRecentFoundation.get());    			
+		mainGame.updateScore(-1);
         return true;
     }
     

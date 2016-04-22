@@ -101,7 +101,8 @@ public class HandToFoundationMove extends Move {
         {
         	mainGame.column1.add(hand.get());
         	mostRecentFoundation = mainGame.column1;
-        	theGame.updateNumberCardsLeft(+1);
+        	//theGame.updateNumberCardsLeft(-1);    			
+			mainGame.updateScore(+1);
         }        
         
         //Placing in foundation 2
@@ -115,7 +116,8 @@ public class HandToFoundationMove extends Move {
         		{
         			mainGame.column2.add(hand.get());
     	        	mostRecentFoundation = mainGame.column2;
-    	        	theGame.updateNumberCardsLeft(+1);
+    	        	//theGame.updateNumberCardsLeft(-1);    			
+        			mainGame.updateScore(+1);//HERE
     	        	return true;
         		}
         	}
@@ -128,10 +130,10 @@ public class HandToFoundationMove extends Move {
 	        		//System.out.println(mainGame.column1.count());
 	        		if(mainGame.column1.peek(i).getRank() == hand.peek().getRank())
 	        		{
-	        			System.out.println("NYEH");
 	        			mainGame.column2.add(hand.get());
 	    	        	mostRecentFoundation = mainGame.column2;
-	    	        	theGame.updateNumberCardsLeft(+1);
+	    	        	//theGame.updateNumberCardsLeft(+1);    			
+	        			mainGame.updateScore(+1);
 	    	        	return true;
 	        		}
 		        }
@@ -151,7 +153,8 @@ public class HandToFoundationMove extends Move {
         		{
         			mainGame.column3.add(hand.get());
     	        	mostRecentFoundation = mainGame.column3;
-    	        	theGame.updateNumberCardsLeft(+1);
+    	        	//theGame.updateNumberCardsLeft(+1);    			
+        			mainGame.updateScore(+1);
     	        	return true;
         		}
         	}
@@ -163,7 +166,8 @@ public class HandToFoundationMove extends Move {
 	        		{
 	        			mainGame.column3.add(hand.get());
 	    	        	mostRecentFoundation = mainGame.column3;
-	    	        	theGame.updateNumberCardsLeft(+1);
+	    	        	//theGame.updateNumberCardsLeft(+1);    			
+	        			mainGame.updateScore(+1);
 	    	        	return true;
 	        		}
 		        }
@@ -183,7 +187,8 @@ public class HandToFoundationMove extends Move {
         		{
         			mainGame.column4.add(hand.get());
     	        	mostRecentFoundation = mainGame.column4;
-    	        	theGame.updateNumberCardsLeft(+1);
+    	        	//theGame.updateNumberCardsLeft(+1);    			
+        			mainGame.updateScore(+1);
     	        	return true;
         		}
         	}
@@ -195,7 +200,8 @@ public class HandToFoundationMove extends Move {
 	        		{
 	        			mainGame.column4.add(hand.get());
 	    	        	mostRecentFoundation = mainGame.column4;
-	    	        	theGame.updateNumberCardsLeft(+1);
+	    	        	//theGame.updateNumberCardsLeft(+1);    			
+	        			mainGame.updateScore(+1);
 	    	        	return true;
 	        		}
 		        }
@@ -220,7 +226,8 @@ public class HandToFoundationMove extends Move {
 
         // update count in deck.
         //theGame.updateNumberCardsLeft(+1);
-        hand.add(mostRecentFoundation.get());
+        hand.add(mostRecentFoundation.get());    			
+		mainGame.updateScore(-1);
         return true;
     }
     

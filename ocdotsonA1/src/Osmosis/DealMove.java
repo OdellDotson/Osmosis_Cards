@@ -1,6 +1,9 @@
 package Osmosis;
 
+import java.util.ArrayList;
+
 import ks.common.games.Solitaire;
+import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;
@@ -110,15 +113,44 @@ public class DealMove extends Move {
         	}
         }
 
-        // UNDO:
-        // carefully reverse order of operations
-        //System.out.print("Number of cards that should be moved from hand to deck:");
-        //System.out.println(numberOfCardsJustDelt);
-        for(int i = 0; i<numberOfCardsJustDelt; i++)
+//        for(int i = 0; i<numberOfCardsJustDelt; i++)
+//        {
+//        	
+//        	deck.add(hand.get());
+//        	theGame.updateNumberCardsLeft(+1);
+//        }
+        
+
+        
+        if(numberOfCardsJustDelt == 1)
         {
         	deck.add(hand.get());
         	theGame.updateNumberCardsLeft(+1);
         }
+        
+        else if(numberOfCardsJustDelt == 2)
+        {
+        	Pile temp = new Pile();
+
+        	temp.add(hand.get());
+        	deck.add(hand.get());
+        	deck.add(temp.get());
+        	theGame.updateNumberCardsLeft(+2);
+        }
+        
+        else if(numberOfCardsJustDelt == 3)
+        {
+        	Pile temp = new Pile();
+        	Pile temp2 = new Pile();
+
+        	temp.add(hand.get());
+        	temp2.add(hand.get());
+        	deck.add(hand.get());
+        	deck.add(temp2.get());
+        	deck.add(temp.get());
+        	theGame.updateNumberCardsLeft(+3);
+        }
+        
 //        deck.add(hand.get());
 //        deck.add(hand.get());	            
         //theGame.updateNumberCardsLeft(+numberOfCardsJustDelt);
