@@ -1,9 +1,6 @@
 package Osmosis;
 
-import java.util.ArrayList;
-
 import ks.common.games.Solitaire;
-import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;

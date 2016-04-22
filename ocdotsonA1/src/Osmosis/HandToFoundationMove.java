@@ -20,55 +20,72 @@ public class HandToFoundationMove extends Move {
         this.mainGame = mainGame;
     }
     
-    
-    public boolean allowedToPlaceIntoFoundation(Osmosis mainGame, Pile foundation)
+    /**
+     * Determines if a given reserve pile is able to play into any of the foundation columns.
+     * @param mainGame
+     * @param reserve
+     * @return
+     */
+    public boolean allowedToPlaceIntoFoundation(Osmosis mainGame, Pile reserve)
     {
-    	if(foundation.count() > 0)
+    	//If the reserve has more than 0 cards
+    	if(reserve.count() > 0)
     	{
-	    	if(foundation.peek().sameSuit(mainGame.column1.peek()))
+    		//If the reserve pile's top is the same suit as column 1, it can definitely go into column 1.
+	    	if(reserve.peek().sameSuit(mainGame.column1.peek()))
 	        {
-	        	return false;
+	        	return true;
 	        }        
-	        else if((mainGame.column2.count()>0) && foundation.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	    	//If column 2 has cards and our reserve has the same suit as the column, or if the column 2 is empty
+	        else if((mainGame.column2.count()>0) && reserve.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
 	        {
+	        	//Check if column 1 has any of that suit, so we know if we can add it.
 	        	for(int i = 0; i < mainGame.column1.count(); i++)
 	        	{
-	        		if(mainGame.column1.peek(i).getRank() == foundation.peek().getRank())
+	        		if(mainGame.column1.peek(i).getRank() == reserve.peek().getRank())
 	        		{
-	        			return false;
+	        			return true;
 	        		}
 		        }
 	        }
-	        else if((mainGame.column3.count()>0) && foundation.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
+	        else if((mainGame.column3.count()>0) && reserve.peek().sameSuit(mainGame.column3.peek()) || mainGame.column3.count()==0)
 	        {
 	        	for(int i = 0; i < mainGame.column2.count(); i++)
 	        	{
-	        		if(mainGame.column2.peek(i).getRank() == foundation.peek().getRank())
+	        		if(mainGame.column2.peek(i).getRank() == reserve.peek().getRank())
 	        		{
-	        			return false;
+	        			return true;
 	        		}
 		        }
-	        } 
-	        else if((mainGame.column4.count()>0) && foundation.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
+	        }
+	        else if((mainGame.column4.count()>0) && reserve.peek().sameSuit(mainGame.column4.peek()) || mainGame.column4.count()==0)
 	        {
 	        	for(int i = 0; i < mainGame.column3.count(); i++)
 	        	{
-	        		if(mainGame.column3.peek(i).getRank() == foundation.peek().getRank())
+	        		if(mainGame.column3.peek(i).getRank() == reserve.peek().getRank())
 	        		{
-	        			return false;
+	        			return true;
 	        		}
 		        }
 	        }
     	}
-    	return true;
+    	//If the reserve has no cards, it cannot place into any foundation columns.
+    	//If we catch no other cases, return false.
+    	return false;
     }
     
+    /**
+     * If any of the reserve piles are able to place into any of the foundation columns, 
+     * do not allow any hand -> foundation moves.
+     * @param mainGame
+     * @return
+     */
     public boolean allowedToMakeHandFoundationMove(Osmosis mainGame)
     {
-    	return allowedToPlaceIntoFoundation(mainGame, mainGame.pile1) ||
+    	return !(allowedToPlaceIntoFoundation(mainGame, mainGame.pile1) ||
     			allowedToPlaceIntoFoundation(mainGame, mainGame.pile2) ||
     			allowedToPlaceIntoFoundation(mainGame, mainGame.pile3) ||
-    			allowedToPlaceIntoFoundation(mainGame, mainGame.pile4);
+    			allowedToPlaceIntoFoundation(mainGame, mainGame.pile4));
     }
     
     
