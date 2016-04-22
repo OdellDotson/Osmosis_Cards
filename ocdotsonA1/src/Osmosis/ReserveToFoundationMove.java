@@ -3,19 +3,20 @@ package Osmosis;
 import ks.common.games.Solitaire;
 import ks.common.model.Column;
 import ks.common.model.Move;
+import ks.common.model.Pile;
 
-public class HandToFoundationMove extends Move {
+public class ReserveToFoundationMove extends Move {
 
-	protected Column hand;
+	protected Pile reserve;
 	protected Osmosis mainGame;
 	protected Column mostRecentFoundation;
     
     /**
      * Class Representing the action of dealing four cards to each Pile.
      */
-    public HandToFoundationMove(Osmosis mainGame,Column h) {
+    public ReserveToFoundationMove(Osmosis mainGame,Pile p) {
         super();
-        this.hand = h;
+        this.reserve = p;
         this.mainGame = mainGame;
     }
     
@@ -33,39 +34,44 @@ public class HandToFoundationMove extends Move {
         // VALIDATE:
         if (valid(theGame) == false)
         {
-        	//System.out.print("Invalid move.");
+        	System.out.print("Invalid move.");
             return false;
         }
         //if ()
 
         // EXECUTE:
-    	System.out.println("Move is valid.");
+    	//System.out.println("Move is valid.");
+    	//System.out.println(reserve.count());
 
-        if(hand.empty())
+        if(reserve.empty())
         {
         	System.out.print("Hand empty. ");
         	return false;
         }
-        if(hand.peek().sameSuit(mainGame.column1.peek()))
+        if(reserve.peek().sameSuit(mainGame.column1.peek()))
         {
-        	mainGame.column1.add(hand.get());
+        	mainGame.column1.add(reserve.get());
         	mostRecentFoundation = mainGame.column1;
         	theGame.updateNumberCardsLeft(+1);
         }        
-        else if(hand.peek().sameSuit(mainGame.column2.peek()))
+        else if((mainGame.column2.count()>0) && reserve.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
         {
-        	//if(column1.cards)
+        	System.out.println("Nyah!");
+        	for(int i = 0; i < reserve.count(); i++)
         	{
-	        	mainGame.column1.add(hand.get());
-	        	mostRecentFoundation = mainGame.column1;
-	        	theGame.updateNumberCardsLeft(+1);
-        	}
-        } 
-        else if(hand.peek().sameSuit(mainGame.column3.peek()))
+        		//if(mainGame.column2.peek(i).getRank() == reserve.peek().getRank())
+        		{
+        			mainGame.column2.add(reserve.get());
+    	        	mostRecentFoundation = mainGame.column2;
+    	        	theGame.updateNumberCardsLeft(+1);
+        		}
+	        } 
+        }
+        else if(reserve.peek().sameSuit(mainGame.column3.peek()))
         {
         	
         } 
-        else if(hand.peek().sameSuit(mainGame.column4.peek()))
+        else if(reserve.peek().sameSuit(mainGame.column4.peek()))
         {
         	
         }
@@ -88,7 +94,7 @@ public class HandToFoundationMove extends Move {
 
         // update count in deck.
         //theGame.updateNumberCardsLeft(+1);
-        hand.add(mostRecentFoundation.get());
+    	reserve.add(mostRecentFoundation.get());
         return true;
     }
     

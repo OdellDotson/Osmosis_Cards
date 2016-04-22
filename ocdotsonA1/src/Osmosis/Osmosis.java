@@ -82,12 +82,12 @@ public class Osmosis extends Solitaire {
 	
 	
 	void initializeController() {
-		pileView1.setMouseAdapter(new OsmosisPileController (this, pileView1));
-		pileView2.setMouseAdapter(new OsmosisPileController (this, pileView2));
-		pileView3.setMouseAdapter(new OsmosisPileController (this, pileView3));
-		pileView4.setMouseAdapter(new OsmosisPileController (this, pileView4));
-		handView.setMouseAdapter(new OsmosisHandController (this, handView));
-		deckView.setMouseAdapter(new OsmosisDeckController (this));
+		pileView1.setMouseAdapter(new ReserveController (this, pileView1, pile1));
+		pileView2.setMouseAdapter(new ReserveController (this, pileView2, pile2));
+		pileView3.setMouseAdapter(new ReserveController (this, pileView3, pile3));
+		pileView4.setMouseAdapter(new ReserveController (this, pileView4, pile4));
+		handView.setMouseAdapter(new HandController (this, handView));
+		deckView.setMouseAdapter(new DealController (this));
 	}
 	
 	void initializeModel(int seed) {

@@ -6,12 +6,12 @@ import ks.common.model.Deck;
 import ks.common.model.Move;
 import ks.common.model.Pile;
 
-public class OsmosisDeckController extends java.awt.event.MouseAdapter {
+public class DealController extends java.awt.event.MouseAdapter {
     /** The narcotic instance. */
     protected Osmosis osmosisGame = null;
 
     /** NarcoticDeckController constructor comment. */
-    public OsmosisDeckController(Osmosis game) {
+    public DealController(Osmosis game) {
         super();
         osmosisGame = game;
     }

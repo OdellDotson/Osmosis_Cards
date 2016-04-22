@@ -1,18 +1,15 @@
 package Osmosis;
 
-import ks.common.games.Solitaire;
 import ks.common.model.Column;
-import ks.common.model.Deck;
 import ks.common.model.Move;
-import ks.common.model.Pile;
 import ks.common.view.*;
 
-public class OsmosisHandController extends java.awt.event.MouseAdapter {
+public class HandController extends java.awt.event.MouseAdapter {
 
 	protected Osmosis osmosisGame = null;
     FanPileView handView;
 
-    public OsmosisHandController(Osmosis game, FanPileView handView) {
+    public HandController(Osmosis game, FanPileView handView) {
         super();
 
         osmosisGame = game;
@@ -29,7 +26,7 @@ public class OsmosisHandController extends java.awt.event.MouseAdapter {
 //    	// Original controller
 		//handView.redraw();      
 		
-    	System.out.println("Clicked the hand.");
+    	//System.out.println("Clicked the hand.");
 		 //Pile f = (Pile) osmosisGame.getModelElement("hand");
 	    Column h = (Column) osmosisGame.getModelElement("hand");
 	    
