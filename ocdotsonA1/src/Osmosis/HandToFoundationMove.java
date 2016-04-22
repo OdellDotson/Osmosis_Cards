@@ -37,7 +37,7 @@ public class HandToFoundationMove extends Move {
 	        	return true;
 	        }        
 	    	//If column 2 has cards and our reserve has the same suit as the column, or if the column 2 is empty
-	        else if((mainGame.column2.count()>0) && reserve.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0)
+	        else if(((mainGame.column2.count()>0) && reserve.peek().sameSuit(mainGame.column2.peek()) || mainGame.column2.count()==0) && mainGame.column3.count() != 13)
 	        {
 	        	//Check if column 1 has any of that suit, so we know if we can add it.
 	        	for(int i = 0; i < mainGame.column1.count(); i++)

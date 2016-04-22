@@ -23,24 +23,7 @@ public class HandController extends java.awt.event.MouseAdapter {
      */
     
     public void mousePressed(java.awt.event.MouseEvent me) {
-//    	// Original controller
-		//handView.redraw();      
-		
-    	//System.out.println("Clicked the hand.");
-		 //Pile f = (Pile) osmosisGame.getModelElement("hand");
-//	    Column h = (Column) osmosisGame.getModelElement("hand");
-//	    
-//	    
-//        Move m = new HandToFoundationMove(osmosisGame,h);
-//        if (m.doMove(osmosisGame)) {
-//            // SUCCESS: have solitaire game store this move
-//        	osmosisGame.pushMove(m);
-//
-//            // have solitaire game refresh widgets that were affected 
-//        	osmosisGame.refreshWidgets();
-//        }
-//        else{}
-//        	//System.out.println("Hand controller messed UP");
+
     }
     
     

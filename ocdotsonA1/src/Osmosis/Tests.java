@@ -45,6 +45,8 @@ public class Tests extends TestCase{
 
 		assertTrue (testMove1.valid(osmo));
 		assertTrue (testMove1.doMove(osmo));
+		assertTrue (testMove1.undo(osmo));
+		assertTrue (testMove1.doMove(osmo));
 		assertTrue (testMove1.doMove(osmo));
 		assertTrue (testMove1.doMove(osmo));
 		assertTrue (testMove1.doMove(osmo));
@@ -58,11 +60,12 @@ public class Tests extends TestCase{
 		assertEquals ((testMove2.doMove(osmo)), false);
 		
 		assertTrue (testDeal.doMove(osmo));
-		//assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile1), false);
-		//assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile2), false);
-		//assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile3), true);
-		//assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile4), true);
-		//assertEquals(testHandMove1.allowedToMakeHandFoundationMove(osmo), true);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile1), false);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile2), false);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile3), true);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile4), false);
+		assertEquals(testHandMove1.allowedToMakeHandFoundationMove(osmo), false);
+		assertFalse (testHandMove1.doMove(osmo));
 		assertEquals(osmo.pile1.count(), 0);
 		assertTrue (testDeal.undo(osmo));
 
@@ -87,6 +90,17 @@ public class Tests extends TestCase{
 
 		assertTrue (testDeal.doMove(osmo));
 		assertTrue(testHandMove1.valid(osmo));
+		
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.undo(osmo));
+		assertTrue (testHandMove1.doMove(osmo));		
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
 		assertTrue (testHandMove1.doMove(osmo));
 		assertTrue (testHandMove1.doMove(osmo));
 		assertTrue (testHandMove1.doMove(osmo));
@@ -98,6 +112,64 @@ public class Tests extends TestCase{
 		assertTrue (testHandMove1.doMove(osmo));
 		assertTrue (testHandMove1.doMove(osmo));
 		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		
+
+		assertEquals(testHandMove1.allowedToMakeHandFoundationMove(osmo), true);
+		
+
+		
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		
+
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.undo(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testDeal.doMove(osmo));
+		
+		assertTrue(osmo.hand.empty());
+
+
+		assertEquals(testHandMove1.allowedToMakeHandFoundationMove(osmo), true);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile1), false);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile2), false);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile3), false);
+		assertEquals(testHandMove1.allowedToPlaceIntoFoundation(osmo, osmo.pile4), false);
+		
+
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+
+		assertTrue (testDeal.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		assertTrue (testHandMove1.doMove(osmo));
+		
+		assertTrue(osmo.hand.empty());
 		
 
 		
